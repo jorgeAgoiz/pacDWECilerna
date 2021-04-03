@@ -9,6 +9,7 @@ let vegetables = [
 ];
 
 // Elementos del DOM
+const container = document.querySelector(".container");
 const coins = document.getElementById("coins");
 const insert = document.getElementById("insertCoin");
 const showCoins = document.querySelector(".showCoin");
@@ -19,14 +20,31 @@ let cash = 0;
 // Boton insertar dinero
 const printCoins = () => {
   cash = parseInt(coins.value);
-  console.log(typeof cash);
   showCoins.innerHTML = `<h1>${cash}</h1>`;
   insert.disabled = true;
+  coins.value = 0;
 };
 
 //Boton tirar
 const play = () => {
-  cash--;
-  showCoins.innerHTML = "";
-  showCoins.innerHTML = `<h1>${cash}</h1>`;
+  if (cash > 0) {
+    --cash;
+    showCoins.innerHTML = "";
+    showCoins.innerHTML = `<h1>${cash}</h1>`;
+  }
+  cash == 0 ? (insert.disabled = false) : (insert.disabled = true);
+  /* Implementar el mecanismo para mostrar las verduras y los premios relacionados */
+};
+
+//Boton salir
+const exit = () => {
+  container.remove();
+  let goodbye = document.createElement("div");
+  alert(`Estas seguro de abandonar la partida? Tu saldo es: ${cash}`);
+  goodbye.innerHTML = `
+                        <h1>Gracias por Jugar!!!</h1>
+                        <br>
+                        <button onclick="window.location.reload();">Volver a Jugar</button>
+                    `;
+  document.body.appendChild(goodbye);
 };
