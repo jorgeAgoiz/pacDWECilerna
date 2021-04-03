@@ -34,6 +34,8 @@ const play = () => {
   }
   cash == 0 ? (insert.disabled = false) : (insert.disabled = true);
   /* Implementar el mecanismo para mostrar las verduras y los premios relacionados */
+  const result = showVegetables();
+  console.log(result);
 };
 
 //Boton salir
@@ -47,4 +49,14 @@ const exit = () => {
                         <button onclick="window.location.reload();">Volver a Jugar</button>
                     `;
   document.body.appendChild(goodbye);
+};
+
+//Funcion para mostrar la tirada
+const showVegetables = () => {
+  const results = [];
+  for (let x = 0; x < 3; x++) {
+    let shot = Math.round(Math.random() * 6);
+    results.push(vegetables[shot]);
+  }
+  return results;
 };
