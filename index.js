@@ -24,6 +24,9 @@ let vegOne = document.createElement("img");
 let vegTwo = document.createElement("img");
 let vegThree = document.createElement("img");
 const vegsArray = [vegOne, vegTwo, vegThree];
+const history = document.createElement("ul");
+const historial = document.querySelector(".historial");
+historial.appendChild(history);
 
 // Saldo
 let cash = 0;
@@ -46,6 +49,7 @@ const printCoins = () => {
 const play = () => {
   if (cash > 0) {
     --cash;
+    let oldCash = cash;
     showCoins.innerHTML = "";
     showCoins.innerHTML = `<h1>${cash}</h1>`;
     const { results, numbers } = showVegetables();
@@ -56,6 +60,7 @@ const play = () => {
       showCoins.innerHTML = `<h1>${cash}</h1>`;
     }
     insertVegetables(results);
+    showHistory(prize, oldCash);
   } else {
     alert("No dispone de saldo, inserte mas monedas.");
   }
@@ -137,5 +142,20 @@ const checkPrize = (numbers) => {
       //Si ninguna verdura es igual
       return 0;
     }
+  }
+};
+
+//Funcion para mostrar el historial de tirada
+const showHistory = (prize, oldCash) => {
+  if (prize) {
+    let thr0w = document.createElement("li");
+    thr0w.innerText = `${prize} + ${oldCash} = ${prize + oldCash}`;
+    history.appendChild(thr0w);
+    historial.scroll(0, 200);
+  } else {
+    let thr0w = document.createElement("li");
+    thr0w.innerText = `${oldCash}`;
+    history.appendChild(thr0w);
+    historial.scroll(0, 200);
   }
 };
