@@ -1,7 +1,11 @@
-body {
-  background-color: rgb(252, 215, 215);
+/*  Estilos generales */
+* {
+  font-family: "Orbitron", sans-serif;
 }
 
+body {
+  background-color: rgb(255, 195, 195);
+}
 .container {
   display: grid;
   grid-template-columns: repeat(8, 1fr);
@@ -14,63 +18,129 @@ body {
   justify-content: center;
   align-items: center;
 }
-
+/* Insertar Monedas */
 .insertCoins {
-  background-color: aqua;
+  border: 4px solid rgb(177, 146, 11);
+  border-radius: 12px;
   grid-column: 1 / 3;
   grid-row: 1 / 2;
 }
-.showCoin {
-  background-color: rgb(221, 54, 54);
-  grid-row: 1 / 2;
-  grid-column: 6 / 8;
+.numCoins {
+  width: 30%;
+  height: 20%;
+  border: 2px solid black;
 }
+.btn-coins {
+  background-color: rgb(245, 182, 106);
+  border-radius: 6px;
+  width: 70%;
+  height: 40%;
+  margin: 4px;
+  font-weight: bold;
+  font-size: 1rem;
+  color: black;
+  cursor: pointer;
+}
+
+/* Mostrar saldo */
+.showCoin {
+  background-color: rgb(248, 248, 248);
+  border-radius: 12px;
+  border: 4px solid rgb(218, 185, 3);
+  grid-row: 1 / 2;
+  grid-column: 7 / 8;
+  font-size: 0.8rem;
+}
+
+/* Vegetales */
 .figOne {
-  background-color: rgb(147, 160, 30);
+  background-color: rgb(211, 4, 4);
+  border: 3px solid black;
+  border-radius: 12px;
   grid-row: 2 / 3;
   grid-column: 2 / 4;
 }
 .figOne img {
-  width: 90%;
-  height: 90%;
+  width: 95%;
+  height: 95%;
   object-fit: cover;
   object-position: center center;
 }
 .figTwo {
-  background-color: rgb(17, 0, 255);
+  background-color: rgb(211, 4, 4);
+  border: 3px solid black;
+  border-radius: 12px;
   grid-row: 2 / 3;
   grid-column: 4 / 6;
 }
 .figTwo img {
-  width: 90%;
-  height: 90%;
+  width: 95%;
+  height: 95%;
   object-fit: cover;
   object-position: center center;
 }
 .figThree {
-  background-color: rgb(164, 2, 170);
+  background-color: rgb(211, 4, 4);
+  border: 3px solid black;
+  border-radius: 12px;
   grid-row: 2 / 3;
   grid-column: 6 / 8;
 }
 .figThree img {
-  width: 90%;
-  height: 90%;
+  width: 95%;
+  height: 95%;
   object-fit: cover;
   object-position: center center;
 }
+
+/* Boton Salida */
 .exit {
-  background-color: rgb(35, 119, 9);
   grid-row: 3 / 4;
   grid-column: 1 / 3;
 }
+.btn-exit {
+  background-color: rgb(241, 98, 79);
+  border: 3px solid black;
+  border-radius: 12px;
+  width: 70%;
+  height: 50%;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+.play-again {
+  width: 30%;
+  height: 40px;
+  background-color: rgb(244, 247, 83);
+  border: 2px solid black;
+  border-radius: 12px;
+  font-weight: bold;
+  font-size: 1.2;
+  cursor: pointer;
+}
+
+/* Boton Jugar */
 .play {
-  background-color: rgb(69, 114, 167);
   grid-row: 3 / 4;
   grid-column: 3 / 5;
 }
+.btn-throw {
+  background-color: rgb(105, 236, 88);
+  border: 3px solid black;
+  border-radius: 12px;
+  width: 70%;
+  height: 50%;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
 .historial {
-  background-color: rgb(123, 255, 82);
+  background-color: rgb(255, 255, 255);
   grid-row: 3 / 5;
   grid-column: 6 / 8;
   overflow-y: scroll;
+  border: 3px solid black;
+  border-radius: 12px;
+  font-size: 1.4rem;
 }

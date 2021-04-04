@@ -37,7 +37,7 @@ let cash = 0;
 const printCoins = () => {
   if (coins.value > 0) {
     cash = parseInt(coins.value);
-    showCoins.innerHTML = `<h1>${cash}</h1>`;
+    showCoins.innerHTML = `<h1>${cash} $</h1>`;
     insert.disabled = true;
     coins.value = 0;
   } else {
@@ -51,13 +51,13 @@ const play = () => {
     --cash;
     let oldCash = cash;
     showCoins.innerHTML = "";
-    showCoins.innerHTML = `<h1>${cash}</h1>`;
+    showCoins.innerHTML = `<h1>${cash} $</h1>`;
     const { results, numbers } = showVegetables();
     const prize = checkPrize(numbers);
     if (prize) {
       cash = cash + prize;
       showCoins.innerHTML = "";
-      showCoins.innerHTML = `<h1>${cash}</h1>`;
+      showCoins.innerHTML = `<h1>${cash} $</h1>`;
     }
     insertVegetables(results);
     showHistory(prize, oldCash);
@@ -71,11 +71,12 @@ const play = () => {
 const exit = () => {
   container.remove();
   let goodbye = document.createElement("div");
-  alert(`Estas seguro de abandonar la partida? Tu saldo es: ${cash}`);
+  goodbye.style.textAlign = "center";
+  alert(`Abandona la partida. Tu saldo es: ${cash}`);
   goodbye.innerHTML = `
                         <h1>Gracias por Jugar!!!</h1>
                         <br>
-                        <button onclick="window.location.reload();">Volver a Jugar</button>
+                        <button class="play-again" onclick="window.location.reload();">Volver a Jugar</button>
                     `;
   document.body.appendChild(goodbye);
 };
@@ -149,12 +150,12 @@ const checkPrize = (numbers) => {
 const showHistory = (prize, oldCash) => {
   if (prize) {
     let thr0w = document.createElement("li");
-    thr0w.innerText = `${prize} + ${oldCash} = ${prize + oldCash}`;
+    thr0w.innerText = `${prize} + ${oldCash} = ${prize + oldCash} $`;
     history.appendChild(thr0w);
     historial.scroll(0, 200);
   } else {
     let thr0w = document.createElement("li");
-    thr0w.innerText = `${oldCash}`;
+    thr0w.innerText = `${oldCash} $`;
     history.appendChild(thr0w);
     historial.scroll(0, 200);
   }

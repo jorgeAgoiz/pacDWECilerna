@@ -10,18 +10,26 @@
       href="./img/hand-holding-usd-solid.svg"
       type="image/x-icon"
     />
+    <!-- Google fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Orbitron&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="./styles.css" />
   </head>
   <body>
     <div class="container">
       <div class="insertCoins">
         <input
+          class="numCoins"
           type="number"
           name="coins"
           id="coins"
           placeholder="Numero de monedas..."
         />
         <input
+          class="btn-coins"
           type="submit"
           id="insertCoin"
           value="Insertar"
@@ -32,8 +40,12 @@
       <div class="figOne"></div>
       <div class="figTwo"></div>
       <div class="figThree"></div>
-      <div class="exit"><button onclick="exit()">Salir</button></div>
-      <div class="play"><button onclick="play()">Tirar</button></div>
+      <div class="exit">
+        <button class="btn-exit" onclick="exit()">Salir</button>
+      </div>
+      <div class="play">
+        <button class="btn-throw" onclick="play()">Tirar</button>
+      </div>
       <div class="historial"></div>
     </div>
 
