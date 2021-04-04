@@ -31,8 +31,8 @@ body {
   grid-column: 2 / 4;
 }
 .figOne img {
-  width: 80%;
-  height: 80%;
+  width: 90%;
+  height: 90%;
   object-fit: cover;
   object-position: center center;
 }
@@ -42,8 +42,8 @@ body {
   grid-column: 4 / 6;
 }
 .figTwo img {
-  width: 100%;
-  height: 100%;
+  width: 90%;
+  height: 90%;
   object-fit: cover;
   object-position: center center;
 }
@@ -53,8 +53,8 @@ body {
   grid-column: 6 / 8;
 }
 .figThree img {
-  width: 100%;
-  height: 100%;
+  width: 90%;
+  height: 90%;
   object-fit: cover;
   object-position: center center;
 }

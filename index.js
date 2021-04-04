@@ -1,11 +1,11 @@
 let vegetables = [
-  "aguacate.png",
-  "ajo.png",
-  "cebolla.png",
-  "pepino.png",
-  "puerro.png",
-  "tomate.png",
-  "zanahoria.png",
+  "aguacate.png", // 0
+  "ajo.png", // 1
+  "cebolla.png", // 2
+  "pepino.png", // 3
+  "puerro.png", // 4
+  "tomate.png", // 5
+  "zanahoria.png", // 6
 ];
 
 //********* Elementos del DOM ************
@@ -27,7 +27,6 @@ const vegsArray = [vegOne, vegTwo, vegThree];
 
 // Saldo
 let cash = 0;
-let loading = true; // Spinner de carga
 
 /****** Funcionalidades Botones  ******/
 
@@ -49,12 +48,17 @@ const play = () => {
     --cash;
     showCoins.innerHTML = "";
     showCoins.innerHTML = `<h1>${cash}</h1>`;
-    const result = showVegetables();
-    insertVegetables(result);
+    const { results, numbers } = showVegetables();
+    const prize = checkPrize(numbers);
+    if (prize) {
+      cash = cash + prize;
+      showCoins.innerHTML = "";
+      showCoins.innerHTML = `<h1>${cash}</h1>`;
+    }
+    insertVegetables(results);
   } else {
     alert("No dispone de saldo, inserte mas monedas.");
   }
-  console.log(cash);
   /* Implementar el mecanismo para mostrar las verduras y los premios relacionados */
 };
 
@@ -74,11 +78,13 @@ const exit = () => {
 //Funcion para mostrar la tirada
 const showVegetables = () => {
   const results = [];
+  const numbers = [];
   for (let x = 0; x < 3; x++) {
     let shot = Math.round(Math.random() * 6);
     results.push(vegetables[shot]);
+    numbers.push(shot);
   }
-  return results;
+  return { results, numbers };
 };
 //Funcion para realizar la tirada
 const insertVegetables = (vegetables) => {
@@ -87,4 +93,49 @@ const insertVegetables = (vegetables) => {
     figsArray[x].appendChild(vegsArray[x]);
   }
   cash === 0 ? (insert.disabled = false) : (insert.disabled = true);
+};
+
+//Funcion para comprobar el premio
+const checkPrize = (numbers) => {
+  // Comprobamos que ninguna verdura es zanahoria
+  if (numbers[0] !== 6 && numbers[1] !== 6 && numbers[2] !== 6) {
+    // Si no son zanahoria pero son las tres iguales
+    if (numbers[0] === numbers[1] && numbers[2] === numbers[1]) {
+      return 5;
+    } else if (
+      //Si no son zanahorias pero hay dos iguales
+      numbers[0] === numbers[1] ||
+      numbers[1] === numbers[2] ||
+      numbers[0] === numbers[2]
+    ) {
+      return 2;
+    }
+  } else {
+    //Si hay alguna zanahoria en la tirada
+    //Comprobamos las zanahorias que hay con el metodo .filter
+    const carrot = numbers.filter((num) => num === 6);
+    if (carrot.length === 1) {
+      //Si hay una zanahoria
+      // Y ademas las otras dos verduras son iguales
+      if (
+        numbers[0] === numbers[1] ||
+        numbers[1] === numbers[2] ||
+        numbers[0] === numbers[2]
+      ) {
+        return 3;
+      } else {
+        //Si hay una zanahoria y las otras dos verduras son diferentes
+        return 1;
+      }
+    } else if (carrot.length === 2) {
+      //Si hay dos zanahorias
+      return 4;
+    } else if (carrot.length === 3) {
+      //Si hay tres zanahorias
+      return 10;
+    } else {
+      //Si ninguna verdura es igual
+      return 0;
+    }
+  }
 };
