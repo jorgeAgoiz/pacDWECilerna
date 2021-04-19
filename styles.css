@@ -135,6 +135,7 @@ body {
   font-size: 1.2rem;
 }
 
+/* Historial de monedas */
 .historial {
   background-color: rgb(255, 255, 255);
   grid-row: 3 / 5;

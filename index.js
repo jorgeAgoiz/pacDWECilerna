@@ -1,3 +1,4 @@
+// Array de figuras
 let vegetables = [
   "aguacate.png", // 0
   "ajo.png", // 1
@@ -64,7 +65,6 @@ const play = () => {
   } else {
     alert("No dispone de saldo, inserte mas monedas.");
   }
-  /* Implementar el mecanismo para mostrar las verduras y los premios relacionados */
 };
 
 //Boton salir
@@ -146,7 +146,7 @@ const checkPrize = (numbers) => {
   }
 };
 
-//Funcion para mostrar el historial de tirada
+//Funcion para mostrar el historial de tiradas
 const showHistory = (prize, oldCash) => {
   if (prize) {
     let thr0w = document.createElement("li");
